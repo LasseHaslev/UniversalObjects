@@ -1,6 +1,5 @@
 {
     "name": "lassehaslev/universal-objects",
-    "type": "laravel-plugin",
     "authors": [
         {
             "name": "Lasse S. Haslev",
