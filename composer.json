@@ -1,5 +1,5 @@
 {
-    "name": "lassehaslev/universal",
+    "name": "lassehaslev/universal-objects",
     "type": "laravel-plugin",
     "authors": [
         {
@@ -14,7 +14,7 @@
     },
     "autoload": {
         "psr-4": {
-            "LasseHaslev\\Universal\\": "src/"
+            "LasseHaslev\\UniversalObjects\\": "src/"
         }
     },
     "autoload-dev": {

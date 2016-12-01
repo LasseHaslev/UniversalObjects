@@ -1,6 +1,6 @@
 <?php
 
-namespace LasseHaslev\Universal;
+namespace LasseHaslev\UniversalObjects;
 
 /**
  * Class Object

@@ -1,12 +1,12 @@
 <?php
 
-use LasseHaslev\Universal\Object;
+use LasseHaslev\UniversalObjects\Object;
 
 /**
  * Class Object
  * @author Lasse S. Haslev
  */
-class UniversalTest extends TestCase
+class UniversalObjectsTest extends TestCase
 {
     /** @test */
     public function is_creating_new_object_if_no_other_exists() {
