@@ -9,7 +9,6 @@ namespace LasseHaslev\UniversalObjects;
 class Object
 {
 
-    static $instance = null;
     static $instances = [];
 
     protected $referenceId = null;
@@ -32,11 +31,11 @@ class Object
      */
     public static function create( string $referenceId = null )
     {
+
+        $referenceId = static::setReferenceId($referenceId);
+
         // if instances of referenceId exists use that instead
-        if ( $referenceId == null && static::$instance ) {
-            return static::$instance;
-        }
-        else if ( isset( static::$instances[ $referenceId ] ) ) {
+        if ( isset( static::$instances[ $referenceId ] ) ) {
             return static::$instances[ $referenceId ];
         }
 
@@ -51,14 +50,13 @@ class Object
     public static function createNew( string $referenceId = null )
     {
 
+        $referenceId = static::setReferenceId($referenceId);
+
         $instance = new static;
+
         $instance->referenceId = $referenceId;
-        if ( $referenceId == null ) {
-            static::$instance = $instance;
-        }
-        else {
-            static::$instances[ $referenceId ] = $instance;
-        }
+
+        static::$instances[ $referenceId ] = $instance;
 
         return $instance;
     }
@@ -82,12 +80,19 @@ class Object
      */
     public static function destroy( string $referenceId = null )
     {
-        if ( $referenceId == null && static::$instance ) {
-            static::$instance = null;
-        }
-        else if ( isset( static::$instances[ $referenceId ] ) ) {
+        $referenceId = static::setReferenceId($referenceId);
+
+        if ( isset( static::$instances[ $referenceId ] ) ) {
             unset( static::$instances[ $referenceId ] );
         }
+    }
+
+    public static function setReferenceId(string $referenceId = null)
+    {
+        if ( $referenceId == null ) {
+            $referenceId = static::class;
+        }
+        return $referenceId;
     }
 
 
@@ -100,6 +105,5 @@ class Object
     {
         return $this->referenceId;
     }
-
 
 }

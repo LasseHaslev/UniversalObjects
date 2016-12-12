@@ -2,6 +2,8 @@
 
 use LasseHaslev\UniversalObjects\Object;
 
+class TestGlobalObject extends Object {}
+
 /**
  * Class Object
  * @author Lasse S. Haslev
@@ -26,6 +28,12 @@ class UniversalObjectsTest extends TestCase
         $object = Object::create();
         $objectTwo = Object::createNew();
         $this->assertNotSame( $object, $objectTwo );
+    }
+
+    /** @test */
+    public function is_setting_class_name_as_reference_id_when_no_reference_id_is_set() {
+        $this->assertEquals( Object::class, Object::create()->referenceId() );
+        $this->assertEquals( TestGlobalObject::class, TestGlobalObject::create()->referenceId() );
     }
 
     /** @test */
